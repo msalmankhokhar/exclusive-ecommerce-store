@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block css %}{% endblock css %}
+
+{% block main %}
+
+<main class="py-10 px-5 sm:px-10 md:px-16 lg:px-20">
+    <section class="flex flex-col gap-5">
+        <div class="flex gap-4 items-center">
+            <div class="h-7 w-4 bg-red-500 rounded-sm"></div>
+            <h1 class="text-red-500 font-semibold leading-none text-xs dark:text-white">Our Products</h1>
+        </div>
+        <h2 class="text-2xl dark:text-white font-semibold">Explore Our Products</h2>
+        <div class="flex flex-col gap-5 flex-wrap xs:grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+            {% for i in range(12) %}
+            <!-- Product Box -->
+            <div class="flex flex-col gap-2">
+                <div onmouseenter="showCartBtn(event)" onmouseleave="hideCartBtn(event)" class="productImageWrapper bg-gray-200 relative overflow-hidden border border-gray-200 aspect-square shadow rounded-sm w-full h-full flex flex-col items-center justify-center">
+                    <img class="max-w-20 xs:w-1/2 py-10" src="/static/img/products/{{choice(products)}}" alt="product image">
+                    <button class="bg-black text-white text-xs self-stretch px-2 py-2 absolute -bottom-10 right-0 left-0 hover:bg-gray-800 transition-all duration-300 z-10">Add to Cart</button>
+                </div>
+                <h3 class="leading-none text-xs dark:text-white">CANON EOS DSLR Camera</h3>
+                <div class="flex flex-row gap-1 items-center">
+                    <span class="text-red-600 dark:text-red-400 text-xs leading-none">&dollar; 100</span>
+                    <div class="flex gap-1 items-center">
+                        <i class="fas fa-star text-amber-400 text-xs"></i>
+                        <i class="fas fa-star text-amber-400 text-xs"></i>
+                        <i class="fas fa-star text-amber-400 text-xs"></i>
+                        <i class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                        <i class="fas fa-star text-gray-300 text-xs"></i>
+                    </div>
+                    <span class="text-slate-500 leading-none dark:text-slate-200 text-xs">(35)</span>
+                </div>
+            </div>
+            <!-- product box end -->
+            {% endfor %}
+        </div>
+        <div class="flex items-center justify-center">
+            <button type="button" class="text-xs p-3 bg-red-600 hover:bg-red-500 text-white rounded-sm mt-4">View All Products</button>
+        </div>
+    </section>
+</main>
+
+{% endblock main %}
+
+{% block js %}
+<script>
+    function showCartBtn(event){
+        event.currentTarget.lastElementChild.classList.replace('-bottom-10', 'bottom-0');
+    }
+    function hideCartBtn(event){
+        event.currentTarget.lastElementChild.classList.replace('bottom-0', '-bottom-10');
+    }
+</script>
+{% endblock js %}

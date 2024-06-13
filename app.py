@@ -1,10 +1,24 @@
-from flask import Flask, render_template,redirect
+from flask import Flask, render_template, redirect, session, request
+from random import choice
+from os import listdir
 
 app = Flask(__name__)
+app.secret_key = 'HSNDYD63822'
+PRODUCTS = listdir('static/img/products')
+
+@app.route('/theme', methods=['GET'])
+def theme():
+    darkTheme = request.args.get('value')
+    if darkTheme == 'true':
+        session.update({ 'theme' : True })
+        return { 'theme' : True }
+    else:
+        session.pop('theme')
+        return { 'theme' : False }
 
 @app.route('/')
 def index():
-    return redirect('/signup')
+    return render_template('index.html', choice=choice, products = PRODUCTS)
 
 @app.route('/login')
 def login():
