@@ -4,6 +4,9 @@ module.exports = {
   content: ['./templates/*.html'],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['ui-sans-serif', 'Poppins']
+    }
   },
   plugins: [],
 }
