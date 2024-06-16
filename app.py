@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, session, request
 from random import choice
 from os import listdir
+from urllib.parse import urljoin
 
 app = Flask(__name__)
 app.secret_key = 'HSNDYD63822'
@@ -18,7 +19,8 @@ def theme():
 
 @app.route('/')
 def index():
-    return render_template('index.html', choice=choice, products = PRODUCTS)
+    prevImg = urljoin(request.host_url, '/static/mockups/screely/index/light.png')
+    return render_template('index.html', choice=choice, products = PRODUCTS, prevImg=prevImg)
 
 @app.route('/login')
 def login():
