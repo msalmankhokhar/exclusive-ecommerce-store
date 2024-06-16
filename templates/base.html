@@ -16,7 +16,25 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link defer rel="stylesheet" href="/static/css/material_icons.css">
 <script defer src="/static/js/theme.js"></script>
-
+<style>
+    #mobile-menu{
+        width: 80vw;
+        z-index: 30;
+        position: fixed;
+        top: 0px;
+        left: -80vw;
+        bottom: 0px;
+        padding: 20% 5%;
+        transition: 0.4s ease-in-out all;
+        z-index: 50;
+    }
+    #mobile-menu.open{
+        left: 0px;
+    }
+    #main.faded{
+        opacity: 0.5;
+    }
+</style>
 {% block css %}{% endblock css %}
 
 </head>
@@ -31,12 +49,12 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="bg-slate-100 dark:bg-slate-800 py-3 px-5 sm:px-10 md:px-16 lg:px-20 flex justify-between items-center border-b-2 border-slate-100 dark:border-transparent shadow-sm">
+        <nav class="bg-slate-100 dark:bg-slate-800 py-3 px-5 sm:px-10 md:px-16 lg:px-20 flex justify-between items-center border-b-2 border-slate-100 dark:border-transparent shadow-sm fixed top-0 right-0 left-0 z-40">
             <div>
                 <span class="font-bold text-xl dark:text-white">Exclusive</span>
             </div>
             <ul class="list-none hidden items-center gap-10 lg:flex">
-                <li><a href="#" class="text-sm dark:text-white">Home</a></li>
+                <li><a href="/" class="text-sm dark:text-white">Home</a></li>
                 <li><a href="#" class="text-sm dark:text-white">Contact</a></li>
                 <li><a href="#" class="text-sm dark:text-white">About</a></li>
                 <li><a href="/signup" class="text-sm dark:text-white">Signup</a></li>
@@ -49,8 +67,21 @@
                 </div>
                 <button id="theme-toggle" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-500 ease-in-out">
                     <!-- used when using Python Flask -->
-                    <i id="theme-toggle-icon" class="fas fa-moon dark:text-white"></i>
+                    <i id="theme-toggle-icon" class="fas fa-moon dark:text-white leading-none"></i>
                 </button>
+                <button id="menu-toggle" class="lg:hidden ml-2">
+                    <i id="menu-toggle-icon" class="fas fa-bars dark:text-white text-xl leading-none"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="flex- flex-col bg-slate-100 dark:bg-slate-700">
+                <ul class="list-none flex flex-col items-center gap-10">
+                    <li><a href="/" class="text-sm dark:text-white">Home</a></li>
+                    <li><a href="#" class="text-sm dark:text-white">Contact</a></li>
+                    <li><a href="#" class="text-sm dark:text-white">About</a></li>
+                    <li><a href="/signup" class="text-sm dark:text-white">Signup</a></li>
+                    <li><a href="/login" class="text-sm dark:text-white">Log In</a></li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -67,7 +98,14 @@
         </div>
     </footer>
     <script src="https://kit.fontawesome.com/7d3f73a100.js" crossorigin="anonymous"></script>
-
+    <script>
+        const menu_toggle = document.getElementById('menu-toggle');
+        const mobile_menu = document.getElementById('mobile-menu');
+        function toggleMenu(){
+            mobile_menu.classList.toggle('open');
+        }
+        menu_toggle.addEventListener('click', toggleMenu);
+    </script>
     {% block js %}{% endblock js %}
 </body>
 </html>
