@@ -8,12 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/css/tailwindcss/output.css">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" /> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link defer rel="stylesheet" href="/static/css/material_icons.css">
 <script defer src="/static/js/theme.js"></script>
 
 {% block css %}{% endblock css %}
 
 </head>
-<body class="bg-slate-100 dark:bg-gray-900">
+<body class="bg-white dark:bg-gray-900">
     <header class="">
         <!-- Top Nav -->
         <div class="py-2 px-5 bg-black sm:flex items-center justify-center">
@@ -24,7 +27,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="bg-white dark:bg-slate-800 py-3 px-5 sm:px-10 md:px-16 lg:px-20 flex justify-between items-center border-b-2 border-slate-100 dark:border-transparent shadow-sm">
+        <nav class="bg-slate-100 dark:bg-slate-800 py-3 px-5 sm:px-10 md:px-16 lg:px-20 flex justify-between items-center border-b-2 border-slate-100 dark:border-transparent shadow-sm">
             <div>
                 <span class="font-bold text-xl dark:text-white">Exclusive</span>
             </div>
@@ -32,7 +35,8 @@
                 <li><a href="#" class="text-sm dark:text-white">Home</a></li>
                 <li><a href="#" class="text-sm dark:text-white">Contact</a></li>
                 <li><a href="#" class="text-sm dark:text-white">About</a></li>
-                <li><a href="#" class="text-sm dark:text-white">Signup</a></li>
+                <li><a href="/signup" class="text-sm dark:text-white">Signup</a></li>
+                <li><a href="/login" class="text-sm dark:text-white">Log In</a></li>
             </ul>
             <div class="items-center gap-4 flex">
                 <div class="hidden bg-slate-100 border border-slate-200 px-3 py-2 rounded-sm sm:flex gap-3 items-center">

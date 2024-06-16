@@ -1,13 +1,111 @@
 {% extends "base.html" %}
 
-{% block css %}{% endblock css %}
+{% block css %}
+<style>
+    #bannerImgIphone{
+
+    }
+</style>
+{% endblock css %}
 
 {% block main %}
 
-<main class="py-10 px-5 sm:px-10 md:px-16 lg:px-20">
+<main class="py-10 px-5 sm:px-10 md:px-16 lg:px-20 flex flex-col gap-10">
+    <div class="gap-16 justify-center hidden xs:flex">
+        <div class="hidden md:block">
+            <ul class="list-none flex flex-col gap-5">
+                <li><a href="#" class="text-sm dark:text-white">Electronics</a></li>
+                <li><a href="#" class="text-sm whitespace-nowrap dark:text-white">Home & Lifestyle</a></li>
+                <li><a href="#" class="text-sm dark:text-white">Medicine</a></li>
+                <li><a href="#" class="text-sm dark:text-white">Sports</a></li>
+                <li><a href="#" class="text-sm dark:text-white">Fitness</a></li>
+            </ul>
+        </div>
+        <div class="flex-grow max-w-7xl rounded-sm overflow-hidden">
+            <!-- if want to use image ? -->
+            <!-- <img class="w-full" src="/static/img/banners/Frame 560.png" alt="promotion banner"> -->
+            <div class="sm:pt-10 sm:pl-10 sm:pb-7 pt-5 pl-5 pb-2 flex md:gap-10 justify-between bg-black rounded-sm">
+                <div class="flex flex-col md:gap-10 sm:gap-7 xs:gap-5 gap-3 justify-center">
+                    <h1 class="flex md:gap-4 gap-2 items-center">
+                        <i class="fab fa-apple leading-none md:text-xl sm:text-lg text-sm text-white"></i>
+                        <span class="leading-none md:text-xl sm:text-lg text-xs md:mt-2 text-white">iPhone 14 Series</span>
+                    </h1>
+                    <p class="md:text-4xl sm:text-3xl xs:text-lg text-sm text-white">
+                        Up to 10% off Voucher
+                    </p>
+                    <a href="#" class="flex gap-2 self-start border-b pb-2 border-white text-xs md:text-sm">
+                        <span class="leading-none text-white">Shop Now</span><i class="fas fa-arrow-right leading-none text-white"></i>
+                    </a>
+                </div>
+                <div class="self-center w-1/2 lg:max-w-96 pt-5 object-cover">
+                    <img src="/static/img/banners/iphone.png" id="bannerImgIphone" alt="iphone" class="w-full leading-none object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class="flex flex-col gap-5">
         <div class="flex gap-4 items-center">
-            <div class="h-7 w-4 bg-red-500 rounded-sm"></div>
+            <div class="h-7 w-4 bg-red-500"></div>
+            <h1 class="text-red-500 font-semibold leading-none text-xs dark:text-white">Today's</h1>
+        </div>
+        <div class="flex flex-col sm:gap-10 gap-5 sm:flex-row sm:items-end mb-5">
+            <h2 class="text-2xl dark:text-white font-semibold">Flash Sale</h2>
+            <div class="flex gap-2">
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs dark:text-white">Days</span>
+                    <span class="text-4xl font-bold dark:text-white">03</span>
+                </div>
+                <span class="self-end text-4xl font-bold dark:text-white">:</span>
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs dark:text-white">Hours</span>
+                    <span class="text-4xl font-bold dark:text-white">23</span>
+                </div>
+                <span class="self-end text-4xl font-bold dark:text-white">:</span>
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs dark:text-white">Minutes</span>
+                    <span class="text-4xl font-bold dark:text-white">19</span>
+                </div>
+                <span class="self-end text-4xl font-bold dark:text-white">:</span>
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs dark:text-white">Seconds</span>
+                    <span class="text-4xl font-bold dark:text-white">56</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-5 flex-wrap xs:grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+            {% for i in range(12) %}
+            <!-- Product Box -->
+            <div class="flex flex-col gap-2">
+                <div onmouseenter="showCartBtn(event)" onmouseleave="hideCartBtn(event)" class="productImageWrapper bg-white dark:bg-gray-200 relative overflow-hidden border border-gray-200 aspect-square shadow rounded-sm w-full h-full flex flex-col items-center justify-center">
+                    <img class="max-w-20 xs:w-1/2 py-10" src="/static/img/products/{{choice(products)}}" alt="product image">
+                    <span class="bg-red-600 py-1 px-3 rounded-sm absolute top-1 left-1 text-xs leading-none text-white z-10 font-light">-30%</span>
+                    <button class="bg-black text-white text-xs self-stretch px-2 py-2 absolute -bottom-10 right-0 left-0 hover:bg-gray-800 transition-all duration-300 z-10">Add to Cart</button>
+                </div>
+                <h3 class="leading-none text-xs dark:text-white">CANON EOS DSLR Camera</h3>
+                <div class="flex flex-row gap-1 items-center">
+                    <span class="text-red-600 dark:text-red-400 text-xs leading-none">&dollar; 100</span>
+                    <div class="flex gap-1 items-center">
+                        <i class="fas fa-star text-amber-400 text-xs"></i>
+                        <i class="fas fa-star text-amber-400 text-xs"></i>
+                        <i class="fas fa-star text-amber-400 text-xs"></i>
+                        <i class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                        <i class="fas fa-star text-gray-300 text-xs"></i>
+                    </div>
+                    <span class="text-slate-500 leading-none dark:text-slate-200 text-xs">(35)</span>
+                </div>
+            </div>
+            <!-- product box end -->
+            {% endfor %}
+        </div>
+        <div class="flex items-center justify-center">
+            <button type="button" class="text-xs p-3 bg-red-600 hover:bg-red-500 text-white rounded-sm mt-4">View All Products</button>
+        </div>
+    </section>
+
+    <section class="flex flex-col gap-5">
+        <div class="flex gap-4 items-center">
+            <div class="h-7 w-4 bg-red-500"></div>
             <h1 class="text-red-500 font-semibold leading-none text-xs dark:text-white">Our Products</h1>
         </div>
         <h2 class="text-2xl dark:text-white font-semibold">Explore Our Products</h2>
@@ -15,7 +113,7 @@
             {% for i in range(12) %}
             <!-- Product Box -->
             <div class="flex flex-col gap-2">
-                <div onmouseenter="showCartBtn(event)" onmouseleave="hideCartBtn(event)" class="productImageWrapper bg-gray-200 relative overflow-hidden border border-gray-200 aspect-square shadow rounded-sm w-full h-full flex flex-col items-center justify-center">
+                <div onmouseenter="showCartBtn(event)" onmouseleave="hideCartBtn(event)" class="productImageWrapper bg-white dark:bg-gray-200 relative overflow-hidden border border-gray-200 aspect-square shadow rounded-sm w-full h-full flex flex-col items-center justify-center">
                     <img class="max-w-20 xs:w-1/2 py-10" src="/static/img/products/{{choice(products)}}" alt="product image">
                     <button class="bg-black text-white text-xs self-stretch px-2 py-2 absolute -bottom-10 right-0 left-0 hover:bg-gray-800 transition-all duration-300 z-10">Add to Cart</button>
                 </div>
@@ -37,6 +135,66 @@
         </div>
         <div class="flex items-center justify-center">
             <button type="button" class="text-xs p-3 bg-red-600 hover:bg-red-500 text-white rounded-sm mt-4">View All Products</button>
+        </div>
+    </section>
+
+    <section class="flex flex-col gap-5">
+        <div class="flex gap-4 items-center">
+            <div class="h-7 w-4 bg-red-500"></div>
+            <h1 class="text-red-500 font-semibold leading-none text-xs dark:text-white">Categories</h1>
+        </div>
+        <h2 class="text-2xl dark:text-white font-semibold">Browse by Category</h2>
+        <div class="flex flex-col gap-3 flex-wrap xs:grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+            <div class="flex flex-col gap-3 xs:p-3 px-3 py-7 border border-gray-300 dark:border-gray-600 items-center rounded cursor-pointer hover:bg-red-600 *:hover:text-white">
+                <i class="category-icon material-symbols-outlined text-gray-600 dark:text-gray-300">photo_camera</i>
+                <h3 class="text-xs text-gray-500 dark:text-gray-300">Cameras</h3>
+            </div>
+            <div class="flex flex-col gap-3 xs:p-3 px-3 py-7 border border-gray-300 dark:border-gray-600 items-center rounded cursor-pointer hover:bg-red-600 *:hover:text-white">
+                <i class="category-icon material-symbols-outlined text-gray-600 dark:text-gray-300">computer</i>
+                <h3 class="text-xs text-gray-500 dark:text-gray-300">Computers</h3>
+            </div>
+            <div class="flex flex-col gap-3 xs:p-3 px-3 py-7 border border-gray-300 dark:border-gray-600 items-center rounded cursor-pointer hover:bg-red-600 *:hover:text-white">
+                <i class="category-icon material-symbols-outlined text-gray-600 dark:text-gray-300">watch_screentime</i>
+                <h3 class="text-xs text-gray-500 dark:text-gray-300">Smart Watches</h3>
+            </div>
+            <div class="flex flex-col gap-3 xs:p-3 px-3 py-7 border border-gray-300 dark:border-gray-600 items-center rounded cursor-pointer hover:bg-red-600 *:hover:text-white">
+                <i class="category-icon material-symbols-outlined text-gray-600 dark:text-gray-300">smartphone</i>
+                <h3 class="text-xs text-gray-500 dark:text-gray-300">Smart phones</h3>
+            </div>
+            <div class="flex flex-col gap-3 xs:p-3 px-3 py-7 border border-gray-300 dark:border-gray-600 items-center rounded cursor-pointer hover:bg-red-600 *:hover:text-white">
+                <i class="category-icon material-symbols-outlined text-gray-600 dark:text-gray-300">headphones</i>
+                <h3 class="text-xs text-gray-500 dark:text-gray-300">Headphones</h3>
+            </div>
+            <div class="flex flex-col gap-3 xs:p-3 px-3 py-7 border border-gray-300 dark:border-gray-600 items-center rounded cursor-pointer hover:bg-red-600 *:hover:text-white">
+                <i class="category-icon material-symbols-outlined text-gray-600 dark:text-gray-300">stadia_controller</i>
+                <h3 class="text-xs text-gray-500 dark:text-gray-300">Gaming</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-36">
+        <div class="flex flex-col lg:flex-row gap-10 justify-around items-center flex-wrap">
+            <div class="flex flex-col gap-4 items-center">
+                <div class="rounded-full p-2 overflow-hidden bg-gray-300">
+                    <i class="end-sec-icon material-symbols-outlined rounded-full bg-black p-3 text-white">local_shipping</i>
+                </div>
+                <h1 class="text-sm lg:text-lg dark:text-white">FREE AND FAST DELIVERY</h1>
+                <p class="text-xs text-gray-500 dark:text-gray-300">Free delivery for all orders above $140</p>
+            </div>
+            <div class="flex flex-col gap-4 items-center">
+                <div class="rounded-full p-2 overflow-hidden bg-gray-300">
+                    <i class="end-sec-icon material-symbols-outlined rounded-full bg-black p-3 text-white">headset_mic</i>
+                </div>
+                <h1 class="text-sm lg:text-lg dark:text-white">24/7 CUSTOMER SUPPORT</h1>
+                <p class="text-xs text-gray-500 dark:text-gray-300">Friendly 24/7 customer service</p>
+            </div>
+            <div class="flex flex-col gap-4 items-center">
+                <div class="rounded-full p-2 overflow-hidden bg-gray-300">
+                    <i class="end-sec-icon material-symbols-outlined rounded-full bg-black p-3 text-white">verified_user</i>
+                </div>
+                <h1 class="text-sm lg:text-lg dark:text-white">MONEY BACK GUARENTEE</h1>
+                <p class="text-xs text-gray-500 dark:text-gray-300">Get your money back within 30 days</p>
+            </div>
         </div>
     </section>
 </main>
