@@ -19,7 +19,7 @@ def theme():
 
 @app.route('/')
 def index():
-    prevImg = urljoin(request.host_url, '/static/mockups/screely/index/light.png')
+    prevImg = urljoin(request.host_url, '/static/img/mockups/screely/index/light.png')
     return render_template('index.html', choice=choice, products = PRODUCTS, prevImg=prevImg)
 
 @app.route('/login')
